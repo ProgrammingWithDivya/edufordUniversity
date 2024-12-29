@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>multipage university website </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/multipage.css' %}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">    
+
+</head>
+<body>
+	<section class="header" style="--bg-image: url('{% static 'image/banner.png' %}');">
+		<nav>
+		<a href="{% url 'index' %}"><img src="{% static 'image/logo.png' %}"></a>
+		<div class="nav-links" id="nav-links">
+			<i class="fa fa-times" onclick="hideMenu()"></i>
+			<ul>
+				<li><a class="active" href="{% url 'index' %}">HOME</a>  </li>
+				<li><a href="{% url 'about' %}">ABOUT</a>  </li>
+				<li><a href="{% url 'course' %}">COURSE</a>  </li>
+				<li><a href="{% url 'blog' %}">BLOG</a>  </li>
+				<li><a href="{% url 'contact' %}">CONTACT</a>  </li>
+				{% if user %}
+                        <!-- If the user is logged in, show their name -->
+
+				        <li><span class="welcome-message">Welcome, {{ user.first_name}}</span></li>
+
+                        <li><a href="{% url 'logout' %}" class="logout"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+				{% else %}
+                        <li><a href="{% url 'login' %}"><i class="fa-solid fa-user"></i> Login</a></li>
+				{% endif %}
+				<!---<li><a href="{% url 'register' %}"><i class="fa-solid fa-user"></i></a>  </li>--->
+			</ul>
+		</div>
+		<i class="fa fa-bars" onclick="showMenu()"></i>
+		</nav>
+		<!-- Fixed Welcome Message -->
+		{% if user.is_authenticated %}
+			<div id="welcome-message">
+				Welcome {{ user.username }} to our website
+			</div>
+		{% endif %}
+		<!-- Fixed Welcome Message -->
+   <!--- <div id="welcome-message">
+        Welcome {{ user.email }} to our website
+    </div>---->
+		<div class="text-box">
+			<h1 class="anim">World's Biggest University</h1>
+			<p class="anim">Making website is now one of the easiest thing in the world.Youbjust need to learn HTML,CSS,<br>Javscriptand you aregood to go</p>
+			<a href="#" class="btn anim">Visit Us To know More</a>
+		</div>
+	</section>
+	<!-----course------->
+	<section class="course">
+		<h1>Courses We Offer</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <div class="row">
+        	<div class="course-col">
+        		<h3>Intermediate</h3>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+        		</p>
+        	</div>
+        	<div class="course-col">
+        		<h3>Degree</h3>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+        		</p>
+        	</div>
+        	<div class="course-col">
+        		<h3>Post-Graduation</h3>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+        		</p>
+        	</div>
+        </div>
+		
+		
+	</section>
+	<!------campus------>
+    <section class="campus">
+    	<h1>Our Global Campus</h1>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="row">
+        	<div class="campus-col">
+        		<img src="{% static 'image/london.png'%}">
+        		<div class="layer">
+        			<h3>LONDON</h3>
+        		</div>
+        	</div>
+        	<div class="campus-col">
+        		<img src="{% static 'image/newyork.png' %}">
+        		<div class="layer">
+        			<h3>NEW YORK</h3>
+        		</div>
+        	</div>
+        	<div class="campus-col">
+        		<img src="{% static 'image/washington.png' %}">
+        		<div class="layer">
+        			<h3>WASHINGTON</h3>
+        		</div>
+        	</div>
+        </div>
+		
+	</section> 
+	<!-------facilities----->
+	<section class="facilities">
+		<h1>Our facilities</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua</p>
+        <div class="row">
+        	<div class="facilities-col">
+        		<img src="{% static 'image/library.png' %}">
+        		<h3>World Class Library</h3>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua</p>
+        	</div>
+        	<div class="facilities-col">
+        		<img src="{% static 'image/basketball.png' %}">
+        		<h3>Largest Play Ground</h3>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua</p>
+        	</div>
+        	<div class="facilities-col">
+        		<img src="{% static 'image/cafeteria.png' %}">
+        		<h3>Tasty and Healthy Food</h3>
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua</p>
+        	</div>
+        </div>
+	</section>
+	<!--------testimonial---->
+	<section class="testimonials">
+		<h1>What Our Students Says</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua</p>
+        <div class="row">
+        	<div class="testimonial-col">
+        		<img src="{% static 'image/user1.jpg' %}">
+        		<div>
+        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        			consequat. Duis aute irure dolor in reprehenderit in voluptate. </p>
+        			<h3>Christine Berley</h3>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star-half-o"></i>
+        			<i class="fa fa-star-o"></i>
+        		</div>
+        	</div>
+        	<div class="testimonial-col">
+        		<img src="{% static 'image/user2.jpg' %}">
+        		<div>
+        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        			consequat. Duis aute irure dolor in reprehenderit in voluptate. </p>
+        			<h3>David Byer</h3>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star"></i>
+        			<i class="fa fa-star-half-o" ></i>
+        		</div>
+        	</div>
+        </div>
+	</section>
+
+	<!-------call to action---->
+	<section class="cta" style="--bg-image: url('{% static 'image/banner2.jpg' %}');">
+		<h1>Enroll for our various online courses<br> anywhere from the world</h1>
+		<a href="{% url 'contact' %}" class="btn1">Contact Us</a>
+	</section>
+
+	<!-------footer---->
+	<section class="footer">
+	<h4>About Us</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+	<div class="icons">
+		
+		 <i class="fab fa-facebook-f"></i>
+		 <i class="fab fa-twitter"></i>
+		  <i class="fab fa-instagram"></i>
+		  <i class="fab fa-linkedin-in"></i>
+		  <p>Made with <i class="fas fa-heart"></i> by Easy Tutorials.</p>
+    
+		 
+	</div>	
+	</section>
+	<!---javascript for toggle menu----->
+<script type="text/javascript">
+	var navLinks=document.getElementById('nav-links');
+	function showMenu() {
+		navLinks.style.right="0";
+
+	}
+	function hideMenu() {
+		navLinks.style.right="-200px";
+		
+	}
+</script>
+</body>
+</html>

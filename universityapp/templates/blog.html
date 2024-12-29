@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>multipage university website </title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/multipage.css'%}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">    
+
+</head>
+<body>
+	<section class="sub-header" style="--bg-image: url('{% static 'image/background.jpg' %}');">
+		<nav>
+		<a href="{% url 'index' %}"><img src="{% static 'image/logo.png' %}"></a>
+		<div class="nav-links" id="nav-links">
+			<i class="fa fa-times" onclick="hideMenu()"></i>
+			<ul>
+				<li><a href="{% url 'index' %}">HOME</a>  </li>
+				<li><a href="{% url 'about' %}">ABOUT</a>  </li>
+				<li><a href="{% url 'course' %}">COURSE</a>  </li>
+				<li><a class="active" href="{% url 'blog' %}">BLOG</a>  </li>
+				<li><a href="{% url 'contact' %}">CONTACT</a>  </li>
+				{% if user %}
+                        <!-- If the user is logged in, show their name -->
+
+				        <!---<li><span class="welcome-message">Welcome, {{ user.first_name}}</span></li>-->
+
+                        <li><a href="{% url 'logout' %}" class="logout"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+				{% else %}
+                        <li><a href="{% url 'login' %}"><i class="fa-solid fa-user"></i> Login</a></li>
+				{% endif %}
+				<!--<li><a href="{% url 'register' %}"><i class="fa-solid fa-user"></i></a>  </li>-->
+			</ul>
+		</div>
+		<i class="fa fa-bars" onclick="showMenu()"></i>
+		</nav>
+		<h1>Our Certificates and Online Programs for 2025</h1>
+	</section>
+	<!-------about us content------>
+	<section class="blog-content">
+		
+		<div class="row">
+			<div class="blog-left">
+				<img src="{% static 'image/certificate.jpg' %}">
+				<h2>Our Certificates and Online Programs for 2025</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+             <div class="comment-box">
+             	<h3>Leave a Comment</h3>
+             	<form class="comment-form" method="POST" action="{% url 'comment' %}">
+					{% csrf_token %}
+					{% if messages %}
+				 <div class="message-container">
+					 {% for message in messages %}
+					 <div class="message {{ message.tags }}">
+						 {{ message }}
+					 </div>
+					 {% endfor %}
+				 </div>
+				 {% endif %}
+             	<input type="text" name="name" placeholder="Enter Name">
+             	<input type="email" name="email" placeholder="Enter Email">
+             	<textarea rows="5" name="message" placeholder="Your comment" ></textarea>
+             	<button type="submit" class="btn3">POST COMMENT</button>	
+             	</form>
+
+			 </div>
+			</div>
+			<div class="blog-right">
+			<h3>Post Categories </h3>
+			<div>
+				<span>Business Analytics</span>
+				<span>21</span>
+			</div>	
+			<div>
+				<span>Data Science</span>
+				<span>28</span>
+			</div>	
+			<div>
+				<span>Machine Learning</span>
+				<span>15</span>
+			</div>	
+			<div>
+				<span>Computer Science</span>
+				<span>34</span>
+			</div>	
+			<div>
+				<span>Cyber Security</span>
+				<span>21</span>
+			</div>	
+			
+			</div>
+		</div>
+	</section>
+	
+	
+		
+	
+	
+
+	<!-------footer---->
+	<section class="footer">
+	<h4>About Us</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+	<div class="icons">
+		
+		 <i class="fab fa-facebook-f"></i>
+		 <i class="fab fa-twitter"></i>
+		  <i class="fab fa-instagram"></i>
+		  <i class="fab fa-linkedin-in"></i>
+		  <p>Made with <i class="fas fa-heart"></i> by Easy Tutorials.</p>
+    
+		 
+	</div>	
+	</section>
+	<!---javascript for toggle menu----->
+<script type="text/javascript">
+	var navLinks=document.getElementById('nav-links');
+	function showMenu() {
+		navLinks.style.right="0";
+
+	}
+	function hideMenu() {
+		navLinks.style.right="-200px";
+		
+	}
+</script>
+</body>
+</html>
