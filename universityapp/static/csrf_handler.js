@@ -1,9 +1,9 @@
 
 
 $(document).ajaxSend(function(event, xhr, settings) {
-  xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+    // Get CSRF token and set it in the request header
+    xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
 });
-
 function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie !== '') {
