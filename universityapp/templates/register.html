@@ -51,6 +51,35 @@
 			</form>
 
 	</div>
+<script type="text/javascript">
+		$(document).ready(function() {
+			$('register.html').submit(function(event) {
+				event.preventDefault(); // Prevent default form submission
+
+				var formData = $(this).serialize(); // Serialize the form data
+
+				// Send the AJAX request
+				$.ajax({
+					url: '{% url "register" %}',  // Your URL to handle registration
+					type: 'POST',
+					data: formData,  // Pass the serialized form data
+					success: function(response) {
+						// Handle the success response
+						// Example: Redirect to another page or show a success message
+						if (response.status === "success") {
+							window.location.href = "{% url 'login_view' %}"; // Redirect to login page
+						} else {
+							alert(response.message); // Show error message
+						}
+					},
+					error: function(xhr, errmsg, err) {
+						// Handle error
+						alert("Error: " + errmsg);
+					}
+				});
+			});
+		});
+	</script>
 
 
 </body>
