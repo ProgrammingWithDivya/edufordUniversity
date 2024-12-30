@@ -37,7 +37,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Use environment variable for ALLOWED_HOSTS
-ALLOWED_HOSTS = ['eduforduniversity-l0so.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['https://eduforduniversity-l0so.onrender.com', 'localhost', '127.0.0.1']
 
 #ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
