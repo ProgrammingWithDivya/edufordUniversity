@@ -26,7 +26,7 @@
             {% endfor %}
         </div>
         {% endif %}
-		<form method="POST" action="{% url 'register' %}">
+		<form method="POST" action="{% url 'register' %}" id="register-form">
 			{% csrf_token %}
 
 			<div class="input-field">
@@ -53,7 +53,7 @@
 	</div>
 <script type="text/javascript">
 		$(document).ready(function() {
-			$('register.html').submit(function(event) {
+			$('#register-form').submit(function(event) {
 				event.preventDefault(); // Prevent default form submission
 
 				var formData = $(this).serialize(); // Serialize the form data
