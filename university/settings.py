@@ -193,3 +193,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # or choose another back
 
 # The session cookie name and age can be adjusted as needed
 SESSION_COOKIE_AGE = 60 * 60 * 24  # 1 day (in seconds)
+
+CSRF_COOKIE_SECURE = False 
+CSRF_COOKIE_HTTPONLY = False 
+CSRF_COOKIE_SAMESITE = 'Lax'
