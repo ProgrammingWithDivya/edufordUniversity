@@ -31,7 +31,7 @@ def register(request):
         # Create and save the new user
         user = User(first_name=first_name, last_name=last_name, email=email, password=password)
         user.save()
-        messages.success(request, 'Registration successful! Please log in.')  # Success message
+        #messages.success(request, 'Registration successful! Please log in.')  # Success message
         return redirect('login')
 
     return render(request, 'register.html')
