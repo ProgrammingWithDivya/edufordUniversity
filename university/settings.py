@@ -47,6 +47,11 @@ if not ALLOWED_HOSTS:
 
 #ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://eduforduniversity-l0so.onrender.com',  # Add your domain here
+    'https://your-other-trusted-domain.com',
+]
+
 
 # Application definition
 
