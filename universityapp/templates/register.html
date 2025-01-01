@@ -71,36 +71,36 @@
         return cookieValue;
     }
 
-		$(document).ready(function() {
-			$('#register-form').submit(function(event) {
-				event.preventDefault(); // Prevent default form submission
+	 // jQuery to handle the form submission via AJAX
+    $(document).ready(function() {
+        $('#register-form').submit(function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-				var formData = $(this).serialize(); // Serialize the form data
+            var formData = $(this).serialize(); // Serialize the form data
 
-				// Send the AJAX request
-				$.ajax({
- 				   url: '{% url "register" %}', 
-    					type: 'POST',
-   					 data: formData,  
-					    headers: {
-					        'X-CSRFToken': getCookie('csrftoken')  // Include CSRF token in the header
-					    },
-					    success: function(response) {
-					        if (response.status === "success") {
-					            window.location.href = "{% url 'login' %}";
-					        } else {
-					            alert(response.message);
-					        }
-					    },
-					    error: function(xhr, errmsg, err) {
-					        alert("Error: " + errmsg);
-					    }
-					});
-
-			});
-		});
-	</script>
-
-
+            // Send the AJAX request
+            $.ajax({
+                url: '{% url "register" %}',  // URL to send the data to
+                type: 'POST',  // POST method for form submission
+                data: formData,  // Serialized form data
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')  // Include CSRF token in the header
+                },
+                success: function(response) {
+                    if (response.status === "success") {
+                        window.location.href = "{% url 'login' %}";
+                    } else {
+                        alert(response.message);  // Display server-side error messages
+                    }
+                },
+                error: function(xhr, errmsg, err) {
+                    // Handle error response from the server
+                    alert("Error: " + errmsg);  // Display an alert with the error message
+                    console.log(xhr.responseText);  // Log the error details to the console
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
