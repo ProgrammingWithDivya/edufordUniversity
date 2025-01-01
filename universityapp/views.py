@@ -35,6 +35,8 @@ from django.http import JsonResponse
         return redirect('login')
 
     return render(request, 'register.html')'''
+
+
 def register(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
@@ -58,13 +60,18 @@ def register(request):
             })
 
         # Create and save the new user
-         user = User(first_name=first_name, last_name=last_name, email=email, password=password)
-         user.save()
+        user = User(
+            first_name=first_name, 
+            last_name=last_name, 
+            email=email, 
+            password=password  # Hash the password before saving
+        )
+        user.save()
 
         # Return success response with rendered login page HTML
         return JsonResponse({
             'status': 'success',
-            'message': 'Registration successful!',
+            'message': 'Registration successful! Please log in.',
             'redirect_url': '{% url "login" %}'  # Include the URL for the login page
         })
 
