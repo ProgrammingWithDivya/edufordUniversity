@@ -37,13 +37,20 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Use environment variable for ALLOWED_HOSTS
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = ['eduforduniversity-l0so.onrender.com', 'localhost', '127.0.0.1']
+
+#ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # Ensure that the ALLOWED_HOSTS is set correctly
 if not ALLOWED_HOSTS:
     raise ValueError("ALLOWED_HOSTS is not set properly in the .env file!")
 
 #ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://eduforduniversity-l0so.onrender.com',  # Add your domain here
+    'https://your-other-trusted-domain.com',
+]
 
 
 # Application definition
@@ -191,3 +198,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # or choose another back
 
 # The session cookie name and age can be adjusted as needed
 SESSION_COOKIE_AGE = 60 * 60 * 24  # 1 day (in seconds)
+
+CSRF_COOKIE_SECURE = False 
+CSRF_COOKIE_HTTPONLY = False 
+CSRF_COOKIE_SAMESITE = 'Lax'

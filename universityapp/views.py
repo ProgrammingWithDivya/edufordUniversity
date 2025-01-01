@@ -5,11 +5,11 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from .models import User, Comment, Contact
 from django.contrib.auth import logout as auth_logout
-
+from django.http import JsonResponse
 
 
 # Registration view
-def register(request):
+'''def register(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -31,11 +31,52 @@ def register(request):
         # Create and save the new user
         user = User(first_name=first_name, last_name=last_name, email=email, password=password)
         user.save()
-        messages.success(request, 'Registration successful! Please log in.')  # Success message
+        #messages.success(request, 'Registration successful! Please log in.')  # Success message
         return redirect('login')
 
-    return render(request, 'register.html')
+    return render(request, 'register.html')'''
 
+
+def register(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password_confirm = request.POST.get('password_confirm')
+
+        # Check if the passwords match
+        if password != password_confirm:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Passwords do not match'
+            })
+
+        # Check if the email already exists
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Email already exists'
+            })
+
+        # Create and save the new user
+        user = User(
+            first_name=first_name, 
+            last_name=last_name, 
+            email=email, 
+            password=password  # Hash the password before saving
+        )
+        user.save()
+
+        # Return success response with rendered login page HTML
+        return JsonResponse({
+            'status': 'success',
+            'message': 'Registration successful! Please log in.',
+            'redirect_url': '{% url "login" %}'  # Include the URL for the login page
+        })
+
+    # If the request is not POST, just render the registration page (for normal page load)
+    return render(request, 'register.html')
 
 
 def login_view(request):
@@ -53,7 +94,7 @@ def login_view(request):
         if user and user.password == password:  # If user exists and the password matches
             # Store the user ID in session to track the logged-in user
             request.session['user_id'] = user.id
-            messages.success(request, f'Welcome, {user.first_name}!')
+            #messages.success(request, f'Welcome, {user.first_name}!')
             return redirect('index')  # Redirect to the index page after successful login
         else:
             messages.error(request, 'Invalid email or password')  # Error message for incorrect login

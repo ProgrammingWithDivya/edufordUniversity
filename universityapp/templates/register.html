@@ -5,12 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>sign up form</title>
+	
 	<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/eduform.css' %}">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="{% static 'csrf_handler.js' %}"></script>
+	 <!-- Include jQuery library -->
     
+	
 </head>
 <body style=" background:linear-gradient(to bottom right,rgba(3, 252, 144,0.5),rgba(169,252,3,0.5),rgba(3, 252, 57,0.7)), url({% static 'image/college background.jpg'%});background-repeat:no-repeat;background-size:cover;background-position:center">
 	<div class="box" >
@@ -26,7 +31,7 @@
             {% endfor %}
         </div>
         {% endif %}
-		<form method="POST">
+		<form method="POST" action="{% url 'register' %}" id="register-form">
 			{% csrf_token %}
 
 			<div class="input-field">
@@ -51,7 +56,53 @@
 			</form>
 
 	</div>
+<script type="text/javascript">
+	 // Function to get the CSRF token from cookies
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
 
+	 // jQuery to handle the form submission via AJAX
+    $(document).ready(function() {
+        $('#register-form').submit(function(event) {
+            event.preventDefault(); // Prevent default form submission
 
+            var formData = $(this).serialize(); // Serialize the form data
+
+            // Send the AJAX request
+            $.ajax({
+                url: '{% url "register" %}',  // URL to send the data to
+                type: 'POST',  // POST method for form submission
+                data: formData,  // Serialized form data
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')  // Include CSRF token in the header
+                },
+                success: function(response) {
+                    if (response.status === "success") {
+                        window.location.href = "{% url 'login' %}";
+                    } else {
+                        alert(response.message);  // Display server-side error messages
+                    }
+                },
+                error: function(xhr, errmsg, err) {
+                    // Handle error response from the server
+                    alert("Error: " + errmsg);  // Display an alert with the error message
+                    console.log(xhr.responseText);  // Log the error details to the console
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
