@@ -10,7 +10,10 @@
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/eduform.css' %}">
-    <script src="{% static 'csrf_handler.js' %}"></script>
+	<script src="{% static 'csrf_handler.js' %}"></script>
+	 <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
 </head>
 <body style=" background:linear-gradient(to bottom right,rgba(3, 252, 144,0.5),rgba(169,252,3,0.5),rgba(3, 252, 57,0.7)), url({% static 'image/college background.jpg'%});background-repeat:no-repeat;background-size:cover;background-position:center">
 	<div class="box" >
@@ -52,6 +55,22 @@
 
 	</div>
 <script type="text/javascript">
+	 // Function to get the CSRF token from cookies
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
 		$(document).ready(function() {
 			$('#register-form').submit(function(event) {
 				event.preventDefault(); // Prevent default form submission
