@@ -1,0 +1,14 @@
+# created by virtualenv automatically
+# Python
+*.sqlite3
+.env
+
+.idea/
+
+# Django
+
+db.sqlite3
+
+
+# Environment variables
+.env
