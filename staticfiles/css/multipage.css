@@ -699,6 +699,7 @@ height:height;
     left: 10px;
     position: absolute;
     z-index: 2;
+    margin-bottom:60px;
   }
 
 
@@ -715,6 +716,8 @@ height:height;
     padding: 10%;
     position:relative;
     top:30%;
+    margin-top:20px;
+	  
   }
 
   .main-container h1 {
@@ -741,6 +744,7 @@ height:height;
   .main-container {
     width: 90%;
     padding: 5%;
+    margin-top:60px;
   }
 
   .main-container h1 {
