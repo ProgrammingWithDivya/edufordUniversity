@@ -111,7 +111,10 @@ button:hover{
 /*media query for form*/
 @media (max-width:480px){
 .box{
-width:96%;
+width:90%;
+}
+.box h3{
+font-size:20px;
 }
 
 }
