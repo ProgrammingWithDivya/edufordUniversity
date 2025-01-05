@@ -707,7 +707,7 @@ height:height;
     padding: 8px 20px;
     margin-top: 20px;
     margin-right:10px;
-    margin-bottom:60px;
+    margin-bottom:100px;
   }
 
   /* Adjust the main container */
@@ -715,7 +715,7 @@ height:height;
     width: 80%;
     padding: 10%;
     position:relative;
-    top:30%;
+    top:40%;
     margin-top:20px;
   }
 
@@ -745,7 +745,7 @@ height:height;
     padding: 5%;
     position:absolute;
     top:12%;
-    margin-top:60px;
+    margin-top:100px;
   }
 
   .main-container h1 {
