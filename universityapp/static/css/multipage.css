@@ -707,6 +707,7 @@ height:height;
     padding: 8px 20px;
     margin-top: 20px;
     margin-right:10px;
+    margin-bottom:60px;
   }
 
   /* Adjust the main container */
@@ -715,6 +716,7 @@ height:height;
     padding: 10%;
     position:relative;
     top:30%;
+    margin-top:20px;
   }
 
   .main-container h1 {
@@ -743,13 +745,12 @@ height:height;
     padding: 5%;
     position:absolute;
     top:12%;
+    margin-top:60px;
   }
 
   .main-container h1 {
     font-size: 24px;
-    text-align:left;
-    margin-left:10px;
-  }
+ }
 
  .main-container p {
     font-size: 16px;
