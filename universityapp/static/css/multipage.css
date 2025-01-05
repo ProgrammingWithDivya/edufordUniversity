@@ -562,6 +562,15 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 background:linear-gradient(to right,rgba(247, 116, 226,0.5),rgba(247, 116, 226,0.5));
+box-sizing:border-box;
+}
+div.buttons {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+
+  text-align: center;
+  z-index: 2;
 }
 div.buttons a{
 padding:10px 25px;
@@ -631,6 +640,7 @@ border-radius:15px 0px 15px 0px;
     margin-top: 60px;  /* Adjust for the fixed message at the top */
     padding: 20px;
 }
+/* 404 error page style */
 h1.error-head{
 text-align:center;
 font-size:45px;
@@ -644,11 +654,15 @@ color:#f5542c;
 font-size:25px;
 font-weight:bold;
 }
+/* home page video background style */
 .back-video{
-position:absolute;
-right:0;
-bottom:0;
+position:fixed;
+top:0;
+left:0;
 z-index:-1;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 @media(min-aspect-ratio:16/9){
 .back-video{
@@ -662,5 +676,72 @@ width:auto;
 height:height;
 }
 }
+/*media query for home page*/
+/* Mobile Responsiveness for Video */
+@media (max-width: 768px) {
+  /* Video adjustments for mobile */
+  .back-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Adjust the buttons for small screens */
+  div.buttons {
+    top: 10%;
+  }
+
+  div.buttons a {
+    font-size: 20px;
+    padding: 8px 20px;
+    margin-top: 20px;
+  }
+
+  /* Adjust the main container */
+  .main-container {
+    width: 80%;
+    padding: 8%;
+  }
+
+  .main-container h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+ .main-container p {
+    font-size: 20px;
+  }
+}
+
+/* For very small screens (e.g., mobile portrait) */
+@media (max-width: 480px) {
+  /* Further adjustments for small devices */
+  .back-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+
+  .main-container {
+    width: 90%;
+    padding: 10%;
+  }
+
+  .main-container h1 {
+    font-size: 26px;
+  }
+
+ .main-container p {
+    font-size: 20px;
+  }
+
+  div.buttons a {
+    font-size: 16px;
+    padding: 6px 15px;
+    margin-top: 15px;
+  }
+}
+
 
 

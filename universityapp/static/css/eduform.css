@@ -108,7 +108,12 @@ button{
 button:hover{
 	background-color: rgba(252, 3, 74, 0.5);
 	      }
+/*media query for form*/
+@media (max-width:480px){
+.box{
+width:96%;
+}
 
-
+}
 
 
