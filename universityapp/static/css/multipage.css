@@ -725,15 +725,15 @@ height:height;
 
   .main-container {
     width: 90%;
-    padding: 10%;
+    padding: 15%;
   }
 
   .main-container h1 {
-    font-size: 26px;
+    font-size: 22px;
   }
 
  .main-container p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   div.buttons a {
