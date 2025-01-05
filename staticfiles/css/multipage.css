@@ -695,33 +695,36 @@ height:height;
 
   /* Adjust the buttons for small screens */
   div.buttons {
-    top: 6%;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    z-index: 2;
   }
+
 
   div.buttons a {
     font-size: 20px;
     padding: 8px 20px;
     margin-top: 20px;
+    margin-right:10px;
   }
 
   /* Adjust the main container */
   .main-container {
     width: 80%;
-    padding: 8%;
-    position:absolute;
-    top:10%;
+    padding: 10%;
+    position:relative;
+    top:30%;
   }
 
   .main-container h1 {
-    font-size: 22px;
-    text-align: left;
-    margin-left:20%;
+    font-size: 28px;
+    margin:20px;
   }
 
  .main-container p {
     font-size: 18px;
-    text-align:left;
-    margin-left:20%;
+    margin:10px;
   }
 }
 
@@ -737,25 +740,22 @@ height:height;
 
   .main-container {
     width: 90%;
-    padding: 15%;
-    position:absolute;
-    top:12%;
+    padding: 5%;
   }
 
   .main-container h1 {
-    font-size: 22px;
-    text-align:left;
-    margin-left:10px;
+    font-size: 24px;
+
   }
 
  .main-container p {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   div.buttons a {
     font-size: 16px;
     padding: 6px 15px;
-    margin-top: 15px;
+
   }
 }
 
